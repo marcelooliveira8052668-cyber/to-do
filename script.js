@@ -1,19 +1,20 @@
-
 let input = document.getElementById("tarefaInput")
 let lista = document.getElementById("listaTarefas")
 
 // Carregar tarefas salvas
-window.onload = function(){
+window.onload = function () {
+
     let tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
-    
-    tarefas.forEach(function(tarefa){
+
+    tarefas.forEach(function (tarefa) {
         criarTarefa(tarefa)
     })
+
 }
 
-function adicionarTarefa(){
+function adicionarTarefa() {
 
-    if(input.value === ""){
+    if (input.value === "") {
         alert("Digite uma tarefa!")
         return
     }
@@ -23,15 +24,18 @@ function adicionarTarefa(){
     salvarTarefas()
 
     input.value = ""
+
 }
 
-function criarTarefa(texto){
+function criarTarefa(texto) {
 
     let li = document.createElement("li")
-    li.textContent = texto
+
+    let span = document.createElement("span")
+    span.textContent = texto
 
     // marcar concluído
-    li.onclick = function(){
+    span.onclick = function () {
         li.classList.toggle("concluida")
         salvarTarefas()
     }
@@ -39,23 +43,27 @@ function criarTarefa(texto){
     let botao = document.createElement("button")
     botao.textContent = "Excluir"
 
-    botao.onclick = function(e){
+    botao.onclick = function (e) {
         e.stopPropagation()
         li.remove()
         salvarTarefas()
     }
 
+    li.appendChild(span)
     li.appendChild(botao)
+
     lista.appendChild(li)
+
 }
 
-function salvarTarefas(){
+function salvarTarefas() {
 
     let tarefas = []
 
-    document.querySelectorAll("#listaTarefas li").forEach(function(li){
-        tarefas.push(li.firstChild.textContent)
+    document.querySelectorAll("#listaTarefas li span").forEach(function (span) {
+        tarefas.push(span.textContent)
     })
 
     localStorage.setItem("tarefas", JSON.stringify(tarefas))
+
 }
