@@ -1,26 +1,18 @@
-function adicionarTarefa() {
+function adicionarTarefa(){
 
-    // Pega o valor digitado
-    const input = document.getElementById("tarefaInput");
-    const textoTarefa = input.value;
+let input = document.getElementById("tarefaInput")
+let lista = document.getElementById("lista")
 
-    if (textoTarefa === "") {
-        alert("Digite uma tarefa!");
-        return;
-    }
+let li = document.createElement("li")
+li.textContent = input.value
 
-    li.onclick = function() {
-  li.remove();
+li.onclick = function(){
+li.remove()
 }
-    // Cria novo elemento <li>
-    const novaTarefa = document.createElement("li");
-    novaTarefa.textContent = textoTarefa;
 
-    // Adiciona dentro da <ul>
-    const lista = document.getElementById("listaTarefas");
-    lista.appendChild(novaTarefa);
+lista.appendChild(li)
 
-    // Limpa o input
-    input.value = "";
+input.value = ""
 
 }
+
