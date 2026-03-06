@@ -6,13 +6,16 @@ let lista = document.getElementById("lista")
 let li = document.createElement("li")
 li.textContent = input.value
 
-li.onclick = function(){
+let botao = document.createElement("button")
+botao.textContent = "Excluir"
+
+botao.onclick = function(){
 li.remove()
 }
 
+li.appendChild(botao)
 lista.appendChild(li)
 
 input.value = ""
 
 }
-
