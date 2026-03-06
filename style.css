@@ -53,3 +53,9 @@ li {
     border-radius: 5px;
 }
 
+li.concluida {
+    text-decoration: line-through;
+    background-color: #d4edda;
+}
+
+
