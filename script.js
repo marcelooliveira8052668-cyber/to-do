@@ -9,6 +9,9 @@ function adicionarTarefa() {
         return;
     }
 
+    li.onclick = function() {
+  li.remove();
+}
     // Cria novo elemento <li>
     const novaTarefa = document.createElement("li");
     novaTarefa.textContent = textoTarefa;
@@ -19,4 +22,5 @@ function adicionarTarefa() {
 
     // Limpa o input
     input.value = "";
+
 }
